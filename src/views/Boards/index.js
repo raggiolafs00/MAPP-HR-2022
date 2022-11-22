@@ -1,11 +1,15 @@
 import React from 'react';
 import { View, Text, TouchableHighlight, Image } from 'react-native';
-import styles from './/styles';
+import styles from './styles';
+import BoardList from '../../components/BoardList'
+import data from '../../resources/data.json'
 
-const Board = () => (
-    <View style = {styles.container}>
-        <Text style = {styles.text}>Board</Text>
-    </View>
-);
 
-export default Board;
+export default function BoardView() {
+    return (
+        <View>
+            <BoardList boards = {data.boards}/>
+        </View>
+    );
+}
+
