@@ -5,14 +5,16 @@ import styles from './styles';
 
 
 
-export default function Main() {
-    return (
+const Main = ({navigation: { navigate }}) => (
         <View style={styles.container}>
+            <Text style={styles.paragraph}>TOODLER APP</Text>
             <Image style={styles.logo}source={logo} />
-            <Text style={styles.paragraph}>TODDLER APP</Text>
-            <TouchableHighlight style={styles.button}>
-                <Text>Gallery</Text>
+            <TouchableHighlight 
+                onPress={() => navigate('Boards')}
+                style={styles.button}>
+                <Text>Boards</Text>
             </TouchableHighlight> 
         </View>
-    )
-}
+);
+
+export default Main;
