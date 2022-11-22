@@ -6,7 +6,7 @@ import styles from './styles';
 
 
 const Main = () => {
-    <View style={styles.container}>
+    <View style = {styles.container}>
         <Image style={styles.logo}source={logo} />
         <Text>TODDLER APP</Text>
         <TouchableHighlight>
