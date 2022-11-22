@@ -5,14 +5,14 @@ import styles from './styles';
 
 
 
-const Main = () => {
-    <View style = {styles.container}>
-        <Image style={styles.logo}source={logo} />
-        <Text>TODDLER APP</Text>
-        <TouchableHighlight>
-            <Text>Gallery</Text>
-        </TouchableHighlight>
-    </View>
+export default function Main() {
+    return (
+        <View style={styles.container}>
+            <Image style={styles.logo}source={logo} />
+            <Text style={styles.paragraph}>TODDLER APP</Text>
+            <TouchableHighlight style={styles.button}>
+                <Text>Gallery</Text>
+            </TouchableHighlight> 
+        </View>
+    )
 }
-
-export default Main;
