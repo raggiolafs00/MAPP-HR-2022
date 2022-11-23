@@ -1,15 +1,33 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { View, Text, TouchableHighlight, Image } from 'react-native';
+import Toolbar from '../../components/Toolbar';
+import Boardlist from '../../components/Boardlist';
+import data from '../../resources/data.json';
 import styles from './styles';
-import BoardList from '../../components/BoardList'
-import data from '../../resources/data.json'
 
+export default function Boards() {
+    const [boards, setBoards] = useState(data.boards);
 
-export default function BoardView() {
+    const [selectedBoards, setSelectedBoards] = useState([]);
+
+    const onBoardLongPress = id => {
+        if (selectedBoards.indexOf(id) !== -1) {
+            setSelectedBoards(selectedBoards.filter(board => board !== id));
+        } else {
+            setSelectedBoards([...selectedBoards, id]);
+        }
+        
+    };
     return (
-        <View>
-            <BoardList boards = {data.boards}/>
-        </View>
-    );
-}
+    <View style={styles.container}>
+        <Toolbar hasSelectedBoards={selectedBoards.length > 0}/>
+        <Boardlist 
+        onLongPress={id => onBoardLongPress(id)}
+        selectedBoards={selectedBoards}
+        boards={boards}/>
+    </View>
+    )
+};
+
+
 
