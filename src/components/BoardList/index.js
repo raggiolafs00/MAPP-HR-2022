@@ -4,7 +4,7 @@ import { View, FlatList } from "react-native";
 import BoardItem from "../BoardItem";
 import styles from "./styles";
 
-export default function BoardList({ boards, selectedBoards, onLongPress}) {
+export default function BoardList({ boards, selectedBoards, onLongPress, navigation}, ) {
   return (
     <View style={styles.container}>
       <FlatList
@@ -16,6 +16,7 @@ export default function BoardList({ boards, selectedBoards, onLongPress}) {
             id ={id}
             name ={name} 
             thumbnailPhoto ={thumbnailPhoto}
+            navigation = {navigation}
            />
         )}
         keyExtractor={(boards) => boards.id} />

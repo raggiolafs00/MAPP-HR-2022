@@ -4,10 +4,10 @@ import { Image, TouchableOpacity, View, Text} from "react-native";
 import { AntDesign } from '@expo/vector-icons';
 import styles from "./styles";
 
-export default function BoardItem({onLongPress, isSelected, id, name, thumbnailPhoto}) {
+export default function BoardItem({onLongPress, isSelected, id, name, thumbnailPhoto, navigation: { navigate }}) {
     return (
         <TouchableOpacity
-        onLongPress={() => onLongPress(id)}>
+        onLongPress={() => onLongPress(id)} onPress={() => navigate('Lists', { id })}>
         {
             isSelected 
             ? 
@@ -15,6 +15,8 @@ export default function BoardItem({onLongPress, isSelected, id, name, thumbnailP
             :
             <></>
         }
+        
+        
     <View style={[styles.boardItem, isSelected ? {opacity: .5} : {}]} >
         <Image
             style={styles.image}
@@ -25,7 +27,7 @@ export default function BoardItem({onLongPress, isSelected, id, name, thumbnailP
         <Text style={styles.text}>{name}</Text>
         </View>
         </TouchableOpacity>
-    ); 
+    )
     BoardItem.propTypes = {
         name: PropTypes.string.isRequired,
         thumbnailPhoto: PropTypes.string.isRequired,
@@ -34,4 +36,3 @@ export default function BoardItem({onLongPress, isSelected, id, name, thumbnailP
         onLongPress: PropTypes.func.isRequired
     };
 }
-

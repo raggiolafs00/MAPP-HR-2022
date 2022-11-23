@@ -6,9 +6,9 @@ import AddModal from '../../components/AddModal';
 import data from '../../resources/data.json';
 import styles from './styles';
 
-export default function Boards() {
+export default function Boards({navigation}) {
     const [boards, setBoards] = useState(data.boards);
-
+    
     const [selectedBoards, setSelectedBoards] = useState([]);
 
     const [isAddModelOpen, setIsAddModelOpen] = useState(false);
@@ -29,7 +29,10 @@ export default function Boards() {
         <Boardlist 
         onLongPress={id => onBoardLongPress(id)}
         selectedBoards={selectedBoards}
-        boards={boards}/>
+        boards={boards}
+        navigation={navigation}/>
+    
+        
         <AddModal
             isOpen={isAddModelOpen}
             closeModal={() => setIsAddModelOpen(false)}
