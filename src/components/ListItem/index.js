@@ -5,8 +5,9 @@ import styles from './styles';
 export default function ListItem({id, name, color, boardId, navigation: { navigate }}) {
     return (
         <TouchableOpacity onPress={() => navigate('Tasks', { id })}>
-        <View style={styles.ListItemContainer}>
+    <View style={[styles.ListItemContainer, {backgroundColor: color}]}>
             <Text style={styles.BaseText}>{name}</Text>
+
         </View>  
         </TouchableOpacity>
     )
