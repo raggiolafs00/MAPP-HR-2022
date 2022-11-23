@@ -5,10 +5,11 @@ import Boardlist from '../../components/BoardList';
 import AddModal from '../../components/AddModal';
 import data from '../../resources/data.json';
 import styles from './styles';
+import * as imageService from '../../services/imageService';
 
 export default function Boards({navigation}) {
     const [boards, setBoards] = useState(data.boards);
-    
+
     const [selectedBoards, setSelectedBoards] = useState([]);
 
     const [isAddModelOpen, setIsAddModelOpen] = useState(false);
@@ -20,6 +21,11 @@ export default function Boards({navigation}) {
             setSelectedBoards([...selectedBoards, id]);
         }
         
+    };
+
+    const takePhoto = async () => {
+        const photo = await imageService.takePhoto();
+        console.log(photo);
     };
     return (
     <View style={styles.container}>
@@ -36,7 +42,7 @@ export default function Boards({navigation}) {
         <AddModal
             isOpen={isAddModelOpen}
             closeModal={() => setIsAddModelOpen(false)}
-            takePhoto={() => { }}
+            takePhoto={() => takePhoto()}
             selectFromCameraRoll={() => { }} />
     </View>
     )
