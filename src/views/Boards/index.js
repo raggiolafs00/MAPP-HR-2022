@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { View, Text, TouchableHighlight, Image } from 'react-native';
 import Toolbar from '../../components/Toolbar';
-import Boardlist from '../../components/Boardlist';
+import Boardlist from '../../components/BoardList';
 import data from '../../resources/data.json';
 import styles from './styles';
 
@@ -20,7 +20,7 @@ export default function Boards() {
     };
     return (
     <View style={styles.container}>
-        <Toolbar hasSelectedBoards={selectedBoards.length > 0}/>
+        <Toolbar hasSelectedBoards={selectedBoards.length > 0} name1 = {'Add Board'} name2 = {'Delete Board'}/>
         <Boardlist 
         onLongPress={id => onBoardLongPress(id)}
         selectedBoards={selectedBoards}
