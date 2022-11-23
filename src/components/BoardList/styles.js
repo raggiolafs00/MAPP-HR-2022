@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { darkerBlue, graniteGray, white } from "../../styles/colors";
+import { darkerBlue, graniteGray, lightGray, white } from "../../styles/colors";
 
 
 export default StyleSheet.create({
@@ -10,7 +10,7 @@ export default StyleSheet.create({
         alignItems: "center",
         paddingLeft: 20,
         paddingRight: 20,
-        backgroundColor: darkerBlue,
+        backgroundColor: lightGray,
 
     },
    

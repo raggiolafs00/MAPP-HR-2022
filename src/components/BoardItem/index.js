@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Image, TouchableOpacity, View, Text} from "react-native";
 import { AntDesign } from '@expo/vector-icons';
 import styles from "./styles";
@@ -25,4 +26,12 @@ export default function BoardItem({onLongPress, isSelected, id, name, thumbnailP
         </View>
         </TouchableOpacity>
     ); 
+    BoardItem.propTypes = {
+        name: PropTypes.string.isRequired,
+        thumbnailPhoto: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
+        isSelected: PropTypes.bool.isRequired,
+        onLongPress: PropTypes.func.isRequired
+    };
 }
+

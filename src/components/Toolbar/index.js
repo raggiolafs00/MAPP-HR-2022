@@ -1,10 +1,13 @@
-import React from "react";
+import React from "react"
+import Proptypes from "prop-types";
 import { TouchableHighlight, View, Text} from "react-native";
 import styles from "./styles";
 
-const Toolbar = ({ hasSelectedBoards }) => (
+const Toolbar = ({ hasSelectedBoards, onAdd }) => (
     <View style={styles.toolbar}>
-        <TouchableHighlight style={styles.toolbarAction}>
+        <TouchableHighlight
+            onPress={() => onAdd()} 
+            style={styles.toolbarAction}>
             <Text style={styles.toolbarActionText}>Add board</Text>
         </TouchableHighlight>
         <TouchableHighlight 
@@ -15,5 +18,9 @@ const Toolbar = ({ hasSelectedBoards }) => (
         </TouchableHighlight>
     </View>
 );
+Toolbar.propTypes = {
+    hasSelectedBoards: Proptypes.bool.isRequired,
+    onAdd: Proptypes.func.isRequired
+};
 
 export default Toolbar;
