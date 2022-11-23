@@ -24,8 +24,8 @@ export default function Boards() {
     return (
     <View style={styles.container}>
         <Toolbar 
-            onAdd={() => setIsAddModelOpen(true)}
-            hasSelectedBoards={selectedBoards.length > 0}/>
+        onAdd={() => setIsAddModelOpen(true)}
+        hasSelectedBoards={selectedBoards.length > 0} name1 = {'Add Board'} name2 = {'Delete Board'}/>
         <Boardlist 
         onLongPress={id => onBoardLongPress(id)}
         selectedBoards={selectedBoards}
