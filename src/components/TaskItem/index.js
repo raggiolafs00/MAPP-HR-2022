@@ -16,9 +16,9 @@ export default function BoardItem({onLongPress, isSelected, id, listId, name, de
         }
     <View style={[styles.taskItem, isSelected ? {opacity: .5} : {}]} >
 
-        <Text style={styles.text}>{name}</Text>
+        <Text style={styles.nameText}>{name}</Text>
         
-        <Text style={styles.text}>{description}</Text>
+        <Text style={styles.descriptionText}>{description}</Text>
         </View>
         </TouchableOpacity>
     ); 

@@ -9,5 +9,8 @@ export default StyleSheet.create({
     },
     toolbar:{
         flex: 1,
+    }, 
+    modal: {
+        flex: 1,
     }
 });

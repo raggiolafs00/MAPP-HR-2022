@@ -7,9 +7,10 @@ export default StyleSheet.create({
         flex: 1,
         flexDirection: "row",
         justifyContent: "center",
-        alignItems: "center",
+        alignItems: "left",
         paddingLeft: 20,
         paddingRight: 20,
+        paddingTop: 20,
         backgroundColor: lightGray,
 
     },
