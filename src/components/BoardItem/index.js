@@ -21,7 +21,7 @@ export default function BoardItem({onLongPress, isSelected, id, name, thumbnailP
         <Image
             style={styles.image}
             rezizeMode="cover"
-            source={{ uri:thumbnailPhoto}} 
+            source={{ uri:thumbnailPhoto, $: 'image/jpeg' }} 
             />
 
         <Text style={styles.text}>{name}</Text>
