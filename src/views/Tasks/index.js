@@ -23,7 +23,12 @@ export default function Tasks ({ route }) {
     };
     return (
     <View style={styles.container}>
-        <TaskModal isOpen = {ModalOpen} closeModal={() => setModalOpen(false)} tasks={tasks} setTasks = {setTasks} listId = {id}/>
+        <TaskModal 
+        isOpen = {ModalOpen} 
+        closeModal={() => setModalOpen(false)} 
+        tasks={tasks} 
+        setTasks = {setTasks} 
+        listId = {id}/>
         <Toolbar 
         onAdd = {() => setModalOpen(true)}
         hasSelectedTasks={selectedTasks.length > 0} 

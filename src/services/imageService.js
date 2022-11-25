@@ -5,9 +5,9 @@ const CAMERA = 'CAMERA';
 
 const cameraOptions = {
     mediaTypes: ImagePicker.MediaTypeOptions.Images,
-        quality: .8,
-        base64: true,
-        aspect: [16, 9]}
+    quality: .8,
+    base64: true,
+    aspect: [16, 9]}
 
 
 const getPermission = async permissionTypes => {
@@ -23,10 +23,8 @@ const getPermission = async permissionTypes => {
 export const selectFromCameraRoll = async () => {
     await getPermission([CAMERA_ROLL]);
     const result = await ImagePicker.launchImageLibraryAsync(cameraOptions);
-
-
-    if (!result.cancelled) {return ''; }
-    return result.uri;
+    if (result.canceled) {return ''; }
+    return result.assets;
 }
 
 
@@ -34,8 +32,8 @@ export const takePhoto = async () => {
     await getPermission([CAMERA, CAMERA_ROLL]);
     const result = await ImagePicker.launchCameraAsync(cameraOptions);
 
-    if (result.cancelled) {return ''; }
+    if (result.canceled) {return ''; }
 
-    return result.uri;
+    return result.assets;
 
 }

@@ -1,33 +1,27 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Entype from "@expo/vector-icons/Entypo";
-import { View, TouchableOpacity } from "react-native";
+import { Text, View, TouchableOpacity } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
+import ModalForm from "../ModalForm";
 import Modal from "../Modal";
 import styles from "./styles";
 
-const AddModal = ({ 
-    isOpen, 
-    closeModal, 
-    takePhoto,
-    selectFromCameraRoll
-}) => (
+
+export default function AddModal ({addBoard, isOpen, closeModal, selectFromCameraRoll, takePhoto}) {
+    return (
     <Modal
         isOpen = {isOpen}
         closeModal = {closeModal}>
         <View>
-            <TouchableOpacity
-                onPress={() => takePhoto()}>
-                <Entype style={styles.icon} name="camera"/>
-            </TouchableOpacity>
-            <TouchableOpacity
-                onPress={() => selectFromCameraRoll()}>
-                <Entype style={styles.icon} name="image"/>
-            </TouchableOpacity>
+            <MaterialIcons style = {styles.icon} name = 'close' onPress={closeModal}/>
+            <ModalForm
+                addBoard = {addBoard}
+                takePhoto = {takePhoto}
+                selectFromCameraRoll = {selectFromCameraRoll}/>
         </View>
     </Modal>
-
 );
-
+    }
 AddModal.propTypes = {
     isOpen: PropTypes.bool.isRequired,
     closeModal: PropTypes.func.isRequired,
@@ -35,4 +29,3 @@ AddModal.propTypes = {
     selectFromCameraRoll: PropTypes.func.isRequired
 };
 
-export default AddModal;

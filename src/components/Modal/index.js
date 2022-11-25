@@ -4,7 +4,6 @@ import { View, Text} from "react-native";
 import NativeModal from "react-native-modal";
 import styles from "./styles";
 
-console.log(NativeModal);
 
 const Modal = ({ 
     isOpen,

@@ -3,7 +3,6 @@ import { View, Text, TouchableHighlight, Image } from 'react-native';
 import Toolbar from '../../components/Toolbar';
 import Boardlist from '../../components/BoardList';
 import AddModal from '../../components/AddModal';
-import Spinner from '../../components/Spinner';
 import data from '../../resources/data.json';
 import styles from './styles';
 import * as imageService from '../../services/imageService';
@@ -14,17 +13,11 @@ export default function Boards({navigation}) {
 
     const [selectedBoards, setSelectedBoards] = useState([]);
 
+    const [photo, setPhoto] = useState({});
+
     const [loadingBoards, setLoadingBoards] = useState(true);
 
     const [isAddModelOpen, setIsAddModelOpen] = useState(false);
-
-    useEffect(() => {
-        (async () => {
-            const boards = await fileService.getAllBoards();
-            setBoards(boards);
-            setLoadingBoards(false);
-        })();
-    }, []);
 
     const onBoardLongPress = id => {
         if (selectedBoards.indexOf(id) !== -1) {
@@ -35,37 +28,38 @@ export default function Boards({navigation}) {
         
     };
 
-    const addBoard = async BoardLocation => {
-        setLoadingBoards(true);
-
-        const newImage = await fileService.addBoard(BoardLocation);
-
-        setBoards([...boards, newImage]);
-        setIsAddModelOpen(false);
-        setLoadingBoards(false);
-    };
-
-
-    const takePhoto = async () => {
-        const photo = await imageService.takePhoto();
-        if (photo.length > 0) { await addBoard(BoardLocation); }
-    };
-
     const selectFromCameraRoll = async () => {
         const photo = await imageService.selectFromCameraRoll();
-        if (photo.length > 0) { await addBoard(BoardLocation); }
+        setPhoto(photo[0].uri);
     };
+
+    const addBoard = (board) => {
+        var lastId = boards.length;
+        board.id = lastId + 1;
+        board.isFinished = false;
+        board.thumbnailPhoto = photo;
+        setBoards((currentBoards) => {
+            return [...boards, board];
+        })
+        closeModal()
+    }
+
+    const deleteSelectedBoards = async () => {
+        setLoadingBoards(true);
+        setSelectedBoards([]);
+        setBoards(boards.filter(board => selectedBoards.indexOf(board.id) === -1))
+        setLoadingImages(false);
+
+    }
+
 
     return (
     <View style={styles.container}>
         <Toolbar 
         onAdd={() => setIsAddModelOpen(true)}
+        onRemove={() => deleteSelectedBoards()}
         hasSelectedBoards={selectedBoards.length > 0} name1 = {'Add Board'} name2 = {'Delete Board'}/>
         {
-            // loadingBoards 
-            // ? 
-            // <Spinner /> 
-            // : 
             <Boardlist 
                 onLongPress={id => onBoardLongPress(id)}
                 selectedBoards={selectedBoards}
@@ -73,10 +67,15 @@ export default function Boards({navigation}) {
                 navigation={navigation}/>
         }
         <AddModal
+            addBoard={addBoard}
             isOpen={isAddModelOpen}
             closeModal={() => setIsAddModelOpen(false)}
+            selectFromCameraRoll={selectFromCameraRoll}
             takePhoto={() => takePhoto()}
-            selectFromCameraRoll={() => selectFromCameraRoll()} />
+            boards={boards}
+            setBoards={setBoards}
+             />
+            
     </View>
     )
 };

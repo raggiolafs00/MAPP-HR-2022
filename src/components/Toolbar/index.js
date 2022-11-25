@@ -3,7 +3,7 @@ import Proptypes from "prop-types";
 import { TouchableHighlight, View, Text} from "react-native";
 import styles from "./styles";
 
-const Toolbar = ({ hasSelectedBoards, name1, name2, onAdd}) => (
+const Toolbar = ({ hasSelectedBoards, name1, name2, onAdd, onRemove}) => (
     <View style={styles.toolbar}>
         <TouchableHighlight
         onPress={() => onAdd()}  
@@ -11,6 +11,7 @@ const Toolbar = ({ hasSelectedBoards, name1, name2, onAdd}) => (
             <Text style={styles.toolbarActionText}>{name1}</Text>
         </TouchableHighlight>
         <TouchableHighlight 
+        onPress = {() => onRemove()}
         style={styles.toolbarAction}
         disabled={!hasSelectedBoards}>
             <Text style={[styles.toolbarActionText, !hasSelectedBoards ? 
