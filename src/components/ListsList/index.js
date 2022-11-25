@@ -17,6 +17,7 @@ export default function ListsList({ listlists, selectedLists, onLongPress, navig
                         color={color}
                         boardId={boardId}
                         navigation={navigation}
+                        lists={listlists}
                         />
                 )}
                 keyExtractor={(lists) => lists.id} />
