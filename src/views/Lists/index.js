@@ -26,7 +26,7 @@ export default function Lists ({ navigation, route }) {
 
         // await Promise.all(selectedLists.map(list => fileService.remove(list)));
         setSelectedLists([]);
-        setLists(selectedLists.filter(list => selectedLists.indexOf(list.id) === -1))
+        setLists(lists.filter(list => selectedLists.indexOf(list.id) === -1))
         // setLoadingLists(false);
     }
 
