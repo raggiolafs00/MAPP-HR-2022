@@ -18,5 +18,13 @@ export default StyleSheet.create({
         width: winWidth - 100,
         backgroundColor: "white",
         padding: 40,
+    },
+    icon: {
+        fontSize: 20,
+        paddingRight: 200,
+        
+        boarderWidth: 1,
+        borderColor: "black",
+        marginTop: 10,
     }
 });

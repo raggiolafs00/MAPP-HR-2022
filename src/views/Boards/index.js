@@ -19,6 +19,8 @@ export default function Boards({navigation}) {
 
     const [isAddModelOpen, setIsAddModelOpen] = useState(false);
 
+    const [isChangeModelOpen, setIsChangeModelOpen] = useState(false);
+
     const onBoardLongPress = id => {
         if (selectedBoards.indexOf(id) !== -1) {
             setSelectedBoards(selectedBoards.filter(board => board !== id));
@@ -41,7 +43,7 @@ export default function Boards({navigation}) {
         setBoards((currentBoards) => {
             return [...boards, board];
         })
-        closeModal()
+        setIsAddModelOpen(false);
     }
 
     const deleteSelectedBoards = async () => {
@@ -52,12 +54,31 @@ export default function Boards({navigation}) {
 
     }
 
+    const modifyBoard = (board) => {
+        if (selectedBoards.length > 1){
+            alert("You can only modify one board at a time");
+        }
+        else {
+            setIsChangeModelOpen(true);
+        }
+        
+    }
+    const changeBoard = (board) => {
+        var index = boards.findIndex(x => x.id === selectedBoards[0]);
+        boards[index].name = board.name;
+        boards[index].thumbnailPhoto = photo;
+        setBoards(boards);
+        setIsChangeModelOpen(false);
+        setSelectedBoards([]);
+    }
+
 
     return (
     <View style={styles.container}>
         <Toolbar 
         onAdd={() => setIsAddModelOpen(true)}
         onRemove={() => deleteSelectedBoards()}
+        onChange={() => modifyBoard()}
         hasSelectedBoards={selectedBoards.length > 0} name1 = {'Add Board'} name2 = {'Delete Board'}/>
         {
             <Boardlist 
@@ -75,6 +96,14 @@ export default function Boards({navigation}) {
             boards={boards}
             setBoards={setBoards}
              />
+        <AddModal
+            addBoard={changeBoard}
+            isOpen={isChangeModelOpen}
+            closeModal={() => setIsChangeModelOpen(false)}
+            selectFromCameraRoll={selectFromCameraRoll}
+            takePhoto={() => takePhoto()}
+            boards={boards}
+            setBoards={setBoards}/>
             
     </View>
     )

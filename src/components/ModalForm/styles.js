@@ -5,7 +5,8 @@ export default StyleSheet.create({
     input: {
         borderwidth: 1,
         borderColor: black,
-        padding: 20, 
+        alignSelf: 'center',
+        padding: 30,
         fontSize: 18, 
         borderRadius: 6
     }, 
@@ -13,4 +14,15 @@ export default StyleSheet.create({
         flex: 1,
         backgroundColor: lightGray,
     },
+    text: {
+        fontSize: 12,
+        padding: 10,
+        color: black,
+    },
+    icon: {
+        fontSize: 25,
+        padding: 10,
+        alignSelf: 'center',
+        color: black,
+    }
 })

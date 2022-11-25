@@ -5,7 +5,6 @@ import BoardItem from "../BoardItem";
 import styles from "./styles";
 
 export default function BoardList({ boards, selectedBoards, onLongPress, navigation}, ) {
-  console.log(boards)
   return (
     <View style={styles.container}>
       <FlatList
@@ -32,4 +31,5 @@ export default function BoardList({ boards, selectedBoards, onLongPress, navigat
     selectedBoards: PropTypes.arrayOf(PropTypes.shape),
     onLongPress: PropTypes.func.isRequired
   };
+  
 }

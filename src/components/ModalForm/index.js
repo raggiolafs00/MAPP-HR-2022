@@ -5,11 +5,12 @@ import styles from './styles';
 import Entype from "@expo/vector-icons/Entypo";
 import { selectFromCameraRoll } from "../../services/imageService";
 
-export default function ModalForm ({addBoard, selectFromCameraRoll, takePhoto}) {
+export default function ModalForm ({addBoard, selectFromCameraRoll}) {
     return (
         <Formik
         initialValues={{ name: '', thumbnailPhoto: ''}}
         onSubmit={values => addBoard(values)}
+
       >
         {({ handleChange, handleBlur, handleSubmit, values }) => (
           <View>
@@ -20,13 +21,8 @@ export default function ModalForm ({addBoard, selectFromCameraRoll, takePhoto}) 
               value={values.name}
             />
             <TouchableOpacity
-                onPress={() => takePhoto()}>
-                    <Text>Take Photo</Text>
-                <Entype style={styles.icon} name="camera"/>
-            </TouchableOpacity>
-            <TouchableOpacity
                 onPress={() => selectFromCameraRoll()}  >
-                    <Text>
+                    <Text style={styles.text}>
                         Select photo from cameraroll
                 </Text>
                 <Entype style={styles.icon} name="image"/>
