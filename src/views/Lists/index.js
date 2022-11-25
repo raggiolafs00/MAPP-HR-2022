@@ -18,13 +18,29 @@ export default function Lists ({ navigation, route }) {
             setSelectedLists(selectedLists.filter(list => list !== id));
         } else {
             setSelectedLists([...selectedLists, id]);
-        }
-        
+        }  
     };
+
+    const deleteSelectedLists = async () => {
+        // setLoadingLists(true);
+
+        // await Promise.all(selectedLists.map(list => fileService.remove(list)));
+        setSelectedLists([]);
+        setLists(selectedLists.filter(list => selectedLists.indexOf(list.id) === -1))
+        // setLoadingLists(false);
+    }
+
+
     return (
     <View style={styles.container}>
-        <Toolbar hasSelectedLists={selectedLists.length > 0} name1 = {'Add List'} name2 = {'Delete List'}/>
-        <ListsList 
+        <Toolbar 
+        hasSelectedLists={selectedLists.length > 0} name1 = {'Add List'} name2 = {'Delete List'}
+        onRemove={() => deleteSelectedLists()}
+        />
+        
+        <ListsList
+        onLongPress={id => onListLongPress(id)}
+        selectedLists={selectedLists} 
         listlists={listlists}
         navigation={navigation}/>
     </View>
