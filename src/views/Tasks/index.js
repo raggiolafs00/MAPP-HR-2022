@@ -6,6 +6,7 @@ import data from '../../resources/data.json';
 import styles from './styles';
 import TaskModal from '../../components/TaskModal'
 import MoveTaskModal from '../../components/MoveTaskModal'
+import ChooseListItem from '../../components/ChooseListItem';
 
 export default function Tasks ({ navigation, route }) {
     const { id } = route.params;
@@ -16,6 +17,7 @@ export default function Tasks ({ navigation, route }) {
     const [ModalOpen, setModalOpen] = useState(false);
     const [ChangeModalOpen, setChangeModalOpen] = useState(false);
     const [MoveModalOpen, setMoveModalOpen] = useState(false);
+    const [ChooseListOpen, setChooseListOpen] = useState(false);
 
     const onTaskLongPress = id => {
         if (selectedTasks.indexOf(id) !== -1) {
@@ -23,6 +25,16 @@ export default function Tasks ({ navigation, route }) {
         } else {
             setSelectedTasks([...selectedTasks, id]);
         }
+    }
+
+    const onTaskPressMove = id => {
+        if (selectedTasks.indexOf(id) !== -1) {
+            setSelectedTasks(selectedTasks.filter(task => task !== id));
+        } else {
+            setSelectedTasks([...selectedTasks, id]);
+        }
+        console.log(id);
+        setMoveModalOpen(true);
     }
 
     const deleteSelectedTasks = async () => {
@@ -64,12 +76,14 @@ export default function Tasks ({ navigation, route }) {
         closeModal()
     }
 
-    const openChooseList = () => {
-        setMoveModalOpen(true);
-    }
-
     const moveTask = (task) => {
-        console.log('hello')
+        var index = tasks.findIndex(x => x.id === selectedTasks[0]);
+        console.log("ble")
+        setChooseListOpen(true);
+        // tasks[index].listId = task.listId;
+        // setTasks(tasks);
+        // setMoveModalOpen(false);
+        // setSelectedTasks([]);
     }
 
     return (
@@ -83,10 +97,10 @@ export default function Tasks ({ navigation, route }) {
 
         <MoveTaskModal 
         isOpen = {MoveModalOpen} 
+        onLongPress={id => onTaskLongPress(id)}
+        selectedTasks={selectedTasks}
         closeModal={() => setMoveModalOpen(false)}
-        lists={route.params.lists}
-        moveTask={moveTask}
-        navigation = {navigation}/>
+        moveTask={moveTask}/>
 
         <TaskModal 
         isOpen = {ChangeModalOpen} 
@@ -105,8 +119,14 @@ export default function Tasks ({ navigation, route }) {
 
         <TaskList 
         onLongPress={id => onTaskLongPress(id)}
-        onTaskPress={() => setMoveModalOpen(true)}
+        onTaskPress={id => onTaskPressMove(id)}
+        moveTask={() => moveTask}
         selectedTasks={selectedTasks}
+        tasklists={tasklists}/>
+
+        <ChooseListItem
+        isOpen = {ChooseListOpen}
+        tasks={tasks}
         tasklists={tasklists}/>
     </View>
     )

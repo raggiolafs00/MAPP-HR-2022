@@ -3,7 +3,7 @@ import { View, FlatList } from "react-native";
 import TaskItem from "../TaskItem";
 import styles from "./styles";
 
-export default function TaskList({ tasklists, selectedTasks, onLongPress, onTaskPress}) {
+export default function TaskList({ tasklists, selectedTasks, onMoveTask, onLongPress, onTaskPress}) {
   return (
     <View style={styles.container}>
       <FlatList
@@ -12,6 +12,7 @@ export default function TaskList({ tasklists, selectedTasks, onLongPress, onTask
           <TaskItem 
             onLongPress={onLongPress}
             onTaskPress={onTaskPress}
+            onMoveTask={onMoveTask}
             isSelected={selectedTasks.indexOf(id) !== -1} 
             id = {id}
             listId ={listId}
