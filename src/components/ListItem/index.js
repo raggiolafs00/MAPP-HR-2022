@@ -4,10 +4,10 @@ import PropTypes from "prop-types";
 import { AntDesign } from '@expo/vector-icons';
 import styles from './styles';
 
-export default function ListItem({onLongPress, isSelected, id, name, color, boardId, navigation: { navigate }}) {
+export default function ListItem({onLongPress, isSelected, id, name, color, boardId, navigation: { navigate }, lists}) {
     return (
         <TouchableOpacity 
-        onLongPress={() => onLongPress(id)} onPress={() => navigate('Tasks', { id })}>
+        onLongPress={() => onLongPress(id)} onPress={() => navigate('Tasks', { id , lists})}>
         {
             isSelected 
             ? 

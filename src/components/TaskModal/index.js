@@ -7,22 +7,7 @@ import TaskForm from "../TaskForm"
 import {MaterialIcons} from '@expo/vector-icons'
 import data from '../../resources/data.json';
 
-export default function TaskModal ({isOpen, closeModal, tasks, setTasks, listId}) {
-
-    const addTask = (task) => {
-        var lastId = tasks.length - 1;
-        task.id = lastId + 1;
-        console.log(task.id);
-        task.isFinished = false;
-        task.listId = listId;
-        console.log(listId);
-        setTasks((currentTasks) => {
-            console.log(currentTasks)
-            console.log(task)
-            return [...currentTasks, task];
-        })
-        closeModal()
-    }
+export default function TaskModal ({isOpen, closeModal, tasks, setTasks, listId, effectTasks}) {
 
     return (
         <NativeModal visible = {isOpen} 
@@ -30,7 +15,7 @@ export default function TaskModal ({isOpen, closeModal, tasks, setTasks, listId}
                animationType = 'slide'
                style={styles.modal}>
             <View style = {styles.body}> 
-                <TaskForm addTask = {addTask} />
+                <TaskForm effectTasks = {effectTasks} />
                 <MaterialIcons style = {styles.icon} name = 'close' onPress={closeModal}/>
             </View>
         </NativeModal>

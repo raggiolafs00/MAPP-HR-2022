@@ -3,11 +3,11 @@ import { View, StyleSheet, TextInput, Button, Text } from 'react-native';
 import { Formik } from 'formik';
 import styles from './styles';
 
-export default function TaskForm ({addTask}) {
+export default function TaskForm ({effectTasks}) {
     return (
         <Formik
         initialValues={{ name: '', description: '' }}
-        onSubmit={values => addTask(values)}
+        onSubmit={values => effectTasks(values)}
       >
         {({ handleChange, handleBlur, handleSubmit, values }) => (
           <View>

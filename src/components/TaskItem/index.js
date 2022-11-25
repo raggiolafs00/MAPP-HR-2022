@@ -3,10 +3,11 @@ import { TouchableOpacity, View, Text} from "react-native";
 import { AntDesign } from '@expo/vector-icons';
 import styles from "./styles";
 
-export default function BoardItem({onLongPress, isSelected, id, listId, name, description, isFinished}) {
+export default function BoardItem({onLongPress, isSelected, id, listId, name, description, isFinished, onTaskPress}) {
     return (
         <TouchableOpacity
-        onLongPress={() => onLongPress(id)}>
+        onLongPress={() => onLongPress(id)}
+        onPress={() => onTaskPress()}>
         {
             isSelected 
             ? 
