@@ -21,6 +21,14 @@ export default function Boards({navigation}) {
 
     const [isChangeModelOpen, setIsChangeModelOpen] = useState(false);
 
+    // useEffect(() => {
+    //     (async () => {
+    //     const [boards, setBoards] = useState(data.boards);
+    //     const [lists, setLists] = useState(data.lists);
+    //     const [tasks, setTasks] = useState(data.tasks);
+    //     })();
+    // },[]);
+
     const onBoardLongPress = id => {
         if (selectedBoards.indexOf(id) !== -1) {
             setSelectedBoards(selectedBoards.filter(board => board !== id));
@@ -51,7 +59,6 @@ export default function Boards({navigation}) {
         setSelectedBoards([]);
         setBoards(boards.filter(board => selectedBoards.indexOf(board.id) === -1))
         setLoadingImages(false);
-
     }
 
     const modifyBoard = (board) => {
