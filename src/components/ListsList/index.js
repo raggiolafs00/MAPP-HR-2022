@@ -3,7 +3,7 @@ import { View, FlatList } from 'react-native';
 import styles from './styles';
 import ListItem from '../ListItem';
 
-export default function ListsList({ listlists, selectedLists, onLongPress, navigation }) {
+export default function ListsList({ listlists, selectedLists, onLongPress, navigation, lists }) {
     return (
         <View style={styles.ListsContainer}>
             <FlatList
@@ -17,7 +17,8 @@ export default function ListsList({ listlists, selectedLists, onLongPress, navig
                         color={color}
                         boardId={boardId}
                         navigation={navigation}
-                        lists={listlists}
+                        listlists={listlists}
+                        lists={lists}
                         />
                 )}
                 keyExtractor={(lists) => lists.id} />

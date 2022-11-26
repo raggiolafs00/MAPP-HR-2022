@@ -2,7 +2,6 @@ import React from "react";
 import { View, Text, Button} from "react-native";
 import NativeModal from "react-native-modal";
 import styles from "./styles";
-import TaskForm from "../TaskForm"
 import {MaterialIcons} from '@expo/vector-icons'
 
 

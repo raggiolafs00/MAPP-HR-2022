@@ -1,20 +1,15 @@
 import React from "react";
-import { View, Text, Button} from "react-native";
-import NativeModal from "react-native-modal";
+import { View, Text, Button, TouchableOpacity} from "react-native";
 import styles from "./styles";
-import TaskForm from "../TaskForm"
-import {MaterialIcons} from '@expo/vector-icons'
+
 
 console.log("lala")
-export default function ChooseListItem({isOpen, closeModal, selectedTasks, moveTask, deleteTask}) {
+export default function ChooseListItem({isSelected, id, name, color, lists}) {
     return (
-        <NativeModal visible = {isOpen} 
-               closeModal = {closeModal}
-               animationType = 'slide'
-               style={styles.modal}>
-            <View style = {styles.body}> 
-                <MaterialIcons style = {styles.icon} name = 'close' onPress={closeModal}/>
-            </View>
-        </NativeModal>
+        <TouchableOpacity onPress = {() => moveTask(id)}>
+            <View style={[styles.ListItemContainer, {backgroundColor: color}, isSelected ? {opacity: .5} :{}]}>
+                <Text style={styles.BaseText}>{name}</Text>
+            </View>  
+        </TouchableOpacity>
     )
 }

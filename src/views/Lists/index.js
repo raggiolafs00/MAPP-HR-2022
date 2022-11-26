@@ -42,6 +42,7 @@ export default function Lists ({ navigation, route }) {
         onLongPress={id => onListLongPress(id)}
         selectedLists={selectedLists} 
         listlists={listlists}
+        lists = {lists}
         navigation={navigation}/>
     </View>
     )
