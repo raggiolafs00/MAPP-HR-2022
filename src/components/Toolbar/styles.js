@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { darkerBlue, graniteGray, purple, orange } from "../../styles/colors";
+import { darkerBlue } from "../../styles/colors";
 
 export default StyleSheet.create({
     toolbar: {

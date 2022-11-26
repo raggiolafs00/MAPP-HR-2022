@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { View, Text, TouchableHighlight, Image, Modal, Button } from 'react-native';
+import React, {useEffect, useState} from 'react';
+import { View } from 'react-native';
 import Toolbar from '../../components/Toolbar';
 import TaskList from '../../components/TaskList';
 import data from '../../resources/data.json';
@@ -13,11 +13,18 @@ export default function Tasks ({ route }) {
     const [tasks, setTasks] = useState(data.tasks);
     const tasklists = tasks.filter(tasks => tasks.listId === id);
     const [selectedTasks, setSelectedTasks] = useState([]);
-    const [loadingTasks, setLoadingTasks] = useState(true);
     const [ModalOpen, setModalOpen] = useState(false);
+    const [finishedTask, setFinishedTask] = useState([]);
     const [ChangeModalOpen, setChangeModalOpen] = useState(false);
     const [MoveModalOpen, setMoveModalOpen] = useState(false);
     const [ChooseListModalOpen, setChooseListModalOpen] = useState(false);
+
+    useEffect(() => {
+        data.tasks = tasks;
+        tasks.isFinished = false;
+    }, [tasks]);
+
+    
 
     const onTaskLongPress = id => {
         if (selectedTasks.indexOf(id) !== -1) {
@@ -92,14 +99,18 @@ export default function Tasks ({ route }) {
 
     const finishTask = (task) => {
         var index = tasks.findIndex(x => x.id === task);
-        // console.log(tasks[index].isFinished)
         if (tasks[index].isFinished) {
             tasks[index].isFinished = false;
+            setFinishedTask(finishedTask.filter(tasks => tasks !== task));
         } else {
             tasks[index].isFinished = true;
+            setFinishedTask(task)
         }
         setTasks(tasks);
+        
     }
+
+    
 
     return (
     <View style={styles.container}>

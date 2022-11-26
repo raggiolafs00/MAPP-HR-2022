@@ -1,11 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Text, View, TouchableOpacity } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
+import {View} from "react-native";
 import ModalForm from "../ModalForm";
 import Modal from "../Modal";
-import styles from "./styles";
-
 
 export default function AddModal ({addBoard, isOpen, closeModal, selectFromCameraRoll}) {
     return (
@@ -22,9 +19,5 @@ export default function AddModal ({addBoard, isOpen, closeModal, selectFromCamer
     </Modal>
 );
     }
-AddModal.propTypes = {
-    isOpen: PropTypes.bool.isRequired,
-    closeModal: PropTypes.func.isRequired,
-    selectFromCameraRoll: PropTypes.func.isRequired
-};
+
 

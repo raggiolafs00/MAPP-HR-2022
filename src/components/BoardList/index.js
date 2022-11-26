@@ -22,14 +22,5 @@ export default function BoardList({ boards, selectedBoards, onLongPress, navigat
         keyExtractor={(boards) => boards.id} />
     </View>
   );
-  BoardList.propTypes = {
-    boards: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.string,
-      name: PropTypes.string,
-      thumbnailPhoto: PropTypes.string,
-    })),
-    selectedBoards: PropTypes.arrayOf(PropTypes.shape),
-    onLongPress: PropTypes.func.isRequired
-  };
   
 }

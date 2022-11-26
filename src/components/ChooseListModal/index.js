@@ -1,6 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { View, Text, FlatList} from "react-native";
+import { View, FlatList} from "react-native";
 import NativeModal from "react-native-modal";
 import styles from "./styles";
 import ChooseListItem from "../ChooseListItem"

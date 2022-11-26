@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import { View, StyleSheet, TextInput, Button, Text } from 'react-native';
-import { Formik, Field } from 'formik';
+import { View, TextInput, Button} from 'react-native';
+import { Formik, } from 'formik';
 import styles from './styles';
 import { SelectList } from 'react-native-dropdown-select-list';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+
 
 
 export default function ListForm ({createList}) {

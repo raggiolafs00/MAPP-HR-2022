@@ -28,11 +28,4 @@ export default function BoardItem({onLongPress, isSelected, id, name, thumbnailP
         </View>
         </TouchableOpacity>
     )
-    BoardItem.propTypes = {
-        name: PropTypes.string.isRequired,
-        thumbnailPhoto: PropTypes.string.isRequired,
-        id: PropTypes.string.isRequired,
-        isSelected: PropTypes.bool.isRequired,
-        onLongPress: PropTypes.func.isRequired
-    };
 }

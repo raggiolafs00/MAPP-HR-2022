@@ -3,7 +3,6 @@ import { View, TouchableOpacity, TextInput, Button, Text } from 'react-native';
 import { Formik } from 'formik';
 import styles from './styles';
 import Entype from "@expo/vector-icons/Entypo";
-import { selectFromCameraRoll } from "../../services/imageService";
 
 export default function ModalForm ({addBoard, selectFromCameraRoll}) {
     return (

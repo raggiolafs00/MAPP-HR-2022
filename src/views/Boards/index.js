@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { View, Text, TouchableHighlight, Image } from 'react-native';
+import { View } from 'react-native';
 import Toolbar from '../../components/Toolbar';
 import Boardlist from '../../components/BoardList';
 import AddModal from '../../components/AddModal';
@@ -20,12 +20,8 @@ export default function Boards({navigation}) {
     const [isChangeModelOpen, setIsChangeModelOpen] = useState(false);
 
     useEffect(() => {
-        (async () => {
-        const [boards, setBoards] = useState(data.boards);
-        const [lists, setLists] = useState(data.lists);
-        const [tasks, setTasks] = useState(data.tasks);
-        })();
-    },[]);
+        data.boards = boards;
+    }, [boards]);
 
     const onBoardLongPress = id => {
         if (selectedBoards.indexOf(id) !== -1) {

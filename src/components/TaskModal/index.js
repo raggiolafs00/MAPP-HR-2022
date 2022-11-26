@@ -1,11 +1,9 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { View, Text} from "react-native";
 import NativeModal from "react-native-modal";
 import styles from "./styles";
 import TaskForm from "../TaskForm"
 import {MaterialIcons} from '@expo/vector-icons'
-import data from '../../resources/data.json';
 
 export default function TaskModal ({isOpen, closeModal, effectTasks}) {
 

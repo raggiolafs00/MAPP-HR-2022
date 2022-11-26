@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import { View, Text, TouchableHighlight, Image } from 'react-native';
+import { View } from 'react-native';
 import Toolbar from '../../components/Toolbar';
 import ListsList from '../../components/ListsList';
 import data from '../../resources/data.json';
 import styles from './styles';
 import ListModal from '../../components/ListModal';
-import Spinner from '../../components/Spinner';
 
 
 export default function Lists ({ navigation, route }) {
@@ -17,7 +16,9 @@ export default function Lists ({ navigation, route }) {
     const [isChangeModelOpen, setIsChangeModelOpen] = useState(false);
     const [selectedcolor, setSelectedcolor] = useState([]);
 
-    
+    useEffect(() => {
+        data.lists = lists;
+    }, [lists]);
 
     const onListLongPress = id => {
         if (selectedLists.indexOf(id) !== -1) {
