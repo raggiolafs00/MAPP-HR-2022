@@ -1,22 +1,22 @@
-import React from "react";
-import { View, FlatList } from "react-native";
-import TaskItem from "../TaskItem";
-import styles from "./styles";
+import React from 'react'
+import { View, FlatList } from 'react-native'
+import TaskItem from '../TaskItem'
+import styles from './styles'
 
-export default function TaskList({ tasklists, selectedTasks, onMoveTask, onLongPress, onTaskPress, finishTask}) {
+export default function TaskList ({ tasklists, selectedTasks, onMoveTask, onLongPress, onTaskPress, finishTask }) {
   return (
     <View style={styles.container}>
       <FlatList
         data={tasklists}
-        renderItem={({ item: {id, listId, name, description, isFinished} }) => (
-          <TaskItem 
+        renderItem={({ item: { id, listId, name, description, isFinished } }) => (
+          <TaskItem
             onLongPress={onLongPress}
             onTaskPress={onTaskPress}
             onMoveTask={onMoveTask}
-            isSelected={selectedTasks.indexOf(id) !== -1} 
+            isSelected={selectedTasks.indexOf(id) !== -1}
             id = {id}
             listId ={listId}
-            name ={name} 
+            name ={name}
             description = {description}
             isFinished = {isFinished}
             finishTask = {finishTask}
@@ -24,5 +24,5 @@ export default function TaskList({ tasklists, selectedTasks, onMoveTask, onLongP
         )}
         keyExtractor={(tasks) => tasks.id} />
     </View>
-  );
+  )
 }

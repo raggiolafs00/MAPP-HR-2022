@@ -1,14 +1,14 @@
-import React from 'react';
-import { View, FlatList } from 'react-native';
-import styles from './styles';
-import ListItem from '../ListItem';
+import React from 'react'
+import { View, FlatList } from 'react-native'
+import styles from './styles'
+import ListItem from '../ListItem'
 
-export default function ListsList({ listlists, selectedLists, onLongPress, navigation, lists }) {
-    return (
+export default function ListsList ({ listlists, selectedLists, onLongPress, navigation, lists }) {
+  return (
         <View style={styles.ListsContainer}>
             <FlatList
                 data={listlists}
-                renderItem={({ item: {id, name, color, boardId} }) => (
+                renderItem={({ item: { id, name, color, boardId } }) => (
                     <ListItem
                         onLongPress={onLongPress}
                         isSelected={selectedLists.indexOf(id) !== -1}
@@ -23,5 +23,5 @@ export default function ListsList({ listlists, selectedLists, onLongPress, navig
                 )}
                 keyExtractor={(lists) => lists.id} />
         </View>
-    );
+  )
 }

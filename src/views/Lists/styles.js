@@ -1,9 +1,9 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
-    container: {
-        flex: 1,
-        flexDirection: 'column',
-        JustifyContent: 'space-between',
-    }
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    JustifyContent: 'space-between'
+  }
 })

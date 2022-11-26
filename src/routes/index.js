@@ -1,14 +1,14 @@
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-
-const Stack = createStackNavigator();
+import React from 'react'
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
 
 /*  Import the views here */
-import Main from "../views/Main";
-import Boards from "../views/Boards";
-import Lists from "../views/Lists";
-import Tasks from "../views/Tasks";
+import Main from '../views/Main'
+import Boards from '../views/Boards'
+import Lists from '../views/Lists'
+import Tasks from '../views/Tasks'
+
+const Stack = createStackNavigator()
 
 const routes = () => (
     <NavigationContainer>
@@ -17,7 +17,7 @@ const routes = () => (
             <Stack.Screen name="Boards" component={Boards} />
             <Stack.Screen name="Lists" component={Lists} />
             <Stack.Screen name="Tasks" component={Tasks} />
-        </Stack.Navigator>     
-    </NavigationContainer>               
-);
-export default routes;
+        </Stack.Navigator>
+    </NavigationContainer>
+)
+export default routes

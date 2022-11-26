@@ -1,11 +1,11 @@
-import React from 'react';
-import { View, TextInput, Button } from 'react-native';
-import { Formik } from 'formik';
-import styles from './styles';
+import React from 'react'
+import { View, TextInput, Button } from 'react-native'
+import { Formik } from 'formik'
+import styles from './styles'
 
-export default function TaskForm ({effectTasks}) {
+export default function TaskForm ({ effectTasks }) {
   console.log(effectTasks)
-    return (
+  return (
         <Formik
         initialValues={{ name: '', description: '' }}
         onSubmit={values => effectTasks(values)}
@@ -28,7 +28,6 @@ export default function TaskForm ({effectTasks}) {
             <Button onPress={handleSubmit} title="Submit" />
           </View>
         )}
-      </Formik>   
-    )
+      </Formik>
+  )
 }
-

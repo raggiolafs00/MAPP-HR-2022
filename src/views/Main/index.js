@@ -1,21 +1,18 @@
-import React from 'react';
-import { View, Text, TouchableHighlight, Image } from 'react-native';
-import logo from '../../resources/logo.png';
-import styles from './styles';
+import React from 'react'
+import { View, Text, TouchableHighlight, Image } from 'react-native'
+import logo from '../../resources/logo.png'
+import styles from './styles'
 
-
-
-
-const Main = ({navigation: { navigate }}) => (
+const Main = ({ navigation: { navigate } }) => (
         <View style={styles.container}>
             <Text style={styles.paragraph}>TOODLER APP</Text>
             <Image style={styles.logo}source={logo} />
-            <TouchableHighlight 
+            <TouchableHighlight
                 onPress={() => navigate('Boards')}
                 style={styles.button}>
                 <Text>Boards</Text>
-            </TouchableHighlight> 
+            </TouchableHighlight>
         </View>
-);
+)
 
-export default Main;
+export default Main
