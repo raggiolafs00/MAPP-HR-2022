@@ -72,8 +72,12 @@ export default function Boards({navigation}) {
     }
     const changeBoard = (board) => {
         var index = boards.findIndex(x => x.id === selectedBoards[0]);
-        boards[index].name = board.name;
-        boards[index].thumbnailPhoto = photo;
+        if (board.name != '') {
+            boards[index].name = board.name;
+        }
+        else if (photo != '') {
+            boards[index].thumbnailPhoto = photo;
+        }
         setBoards(boards);
         setIsChangeModelOpen(false);
         setSelectedBoards([]);
