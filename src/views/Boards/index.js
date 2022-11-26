@@ -6,7 +6,7 @@ import AddModal from '../../components/AddModal';
 import data from '../../resources/data.json';
 import styles from './styles';
 import * as imageService from '../../services/imageService';
-import * as fileService from '../../services/fileService';
+
 
 export default function Boards({navigation}) {
     const [boards, setBoards] = useState(data.boards);
@@ -15,19 +15,17 @@ export default function Boards({navigation}) {
 
     const [photo, setPhoto] = useState({});
 
-    const [loadingBoards, setLoadingBoards] = useState(true);
-
     const [isAddModelOpen, setIsAddModelOpen] = useState(false);
 
     const [isChangeModelOpen, setIsChangeModelOpen] = useState(false);
 
-    // useEffect(() => {
-    //     (async () => {
-    //     const [boards, setBoards] = useState(data.boards);
-    //     const [lists, setLists] = useState(data.lists);
-    //     const [tasks, setTasks] = useState(data.tasks);
-    //     })();
-    // },[]);
+    useEffect(() => {
+        (async () => {
+        const [boards, setBoards] = useState(data.boards);
+        const [lists, setLists] = useState(data.lists);
+        const [tasks, setTasks] = useState(data.tasks);
+        })();
+    },[]);
 
     const onBoardLongPress = id => {
         if (selectedBoards.indexOf(id) !== -1) {
@@ -55,10 +53,10 @@ export default function Boards({navigation}) {
     }
 
     const deleteSelectedBoards = async () => {
-        setLoadingBoards(true);
+        
         setSelectedBoards([]);
         setBoards(boards.filter(board => selectedBoards.indexOf(board.id) === -1))
-        setLoadingImages(false);
+      
     }
 
     const modifyBoard = (board) => {
@@ -98,6 +96,7 @@ export default function Boards({navigation}) {
                 boards={boards}
                 navigation={navigation}/>
         }
+
         <AddModal
             addBoard={addBoard}
             isOpen={isAddModelOpen}
@@ -115,8 +114,13 @@ export default function Boards({navigation}) {
             takePhoto={() => takePhoto()}
             boards={boards}
             setBoards={setBoards}/>
+
+       
+        
             
     </View>
+
+    
     )
 };
 

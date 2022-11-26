@@ -4,8 +4,6 @@ import logo from '../../resources/logo.png';
 import styles from './styles';
 
 
-
-
 const Main = ({navigation: { navigate }}) => (
         <View style={styles.container}>
             <Text style={styles.paragraph}>TOODLER APP</Text>

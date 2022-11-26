@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { View, Text, TouchableHighlight, Image } from 'react-native';
 import Toolbar from '../../components/Toolbar';
 import ListsList from '../../components/ListsList';
 import data from '../../resources/data.json';
 import styles from './styles';
 import ListModal from '../../components/ListModal';
+import Spinner from '../../components/Spinner';
 
 
 export default function Lists ({ navigation, route }) {
@@ -13,8 +14,10 @@ export default function Lists ({ navigation, route }) {
     const listlists = lists.filter(lists => lists.boardId === id);
     const [selectedLists, setSelectedLists] = useState([]);
     const [isAddModelOpen, setIsAddModelOpen] = useState(false);
+    const [isChangeModelOpen, setIsChangeModelOpen] = useState(false);
     const [selectedcolor, setSelectedcolor] = useState([]);
 
+    
 
     const onListLongPress = id => {
         if (selectedLists.indexOf(id) !== -1) {
@@ -25,7 +28,7 @@ export default function Lists ({ navigation, route }) {
     };
 
     const createList = (list, color) => {
-        var lastId = lists.length - 1;
+        var lastId = lists.length;
         list.id = lastId + 1;
         list.boardId = id;
         list.color = color;
@@ -36,9 +39,32 @@ export default function Lists ({ navigation, route }) {
         console.log(list);
     }
 
+    const modifyList = (list) => {
+        if (selectedLists.length > 1){
+            alert("You can only modify one board at a time");
+        }
+        else {
+            setIsChangeModelOpen(true);
+        }
+        
+    }
+
     const deleteSelectedLists = async () => {
         setSelectedLists([]);
         setLists(lists.filter(list => selectedLists.indexOf(list.id) === -1))
+    }
+
+    const changeList = (list, color) => {
+        console.log(list)
+        var index = lists.findIndex(x => x.id === selectedLists[0]);
+        if (list.name != '') {
+            lists[index].name = list.name;
+        }
+        else if (color != '') {
+            lists[index].color = color;
+        }
+        setIsChangeModelOpen(false);
+        setSelectedLists([]);
     }
 
     
@@ -51,7 +77,7 @@ export default function Lists ({ navigation, route }) {
         hasSelectedLists={selectedLists.length > 0} name1 = {'Add List'} name2 = {'Change list'} name3 = {'Delete List'}
         onAdd={() => setIsAddModelOpen(true)}
         onRemove={() => deleteSelectedLists()}
-        onChange={() => setIsChangeModelOpen(true)}
+        onChange={() => modifyList()}
         />
         
         <ListsList
@@ -68,6 +94,15 @@ export default function Lists ({ navigation, route }) {
         boardId = {id}
         setSelectedcolor = {(color) => setSelectedcolor(color)}
         />
+        <ListModal 
+        createList={changeList}
+        isOpen={isChangeModelOpen}
+        closeModal={() => setIsChangeModelOpen(false)}
+        boardId = {id}
+        setSelectedcolor = {(color) => setSelectedcolor(color)}
+        />
+
+
     </View>
     )
     

@@ -7,9 +7,7 @@ import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 
 export default function ListForm ({createList}) {
-    console.log(createList)
     const [selected, setSelected] = useState([]);
-    console.log(selected)
     return (
         <Formik
         initialValues={{ name: '' , color: ''}}
