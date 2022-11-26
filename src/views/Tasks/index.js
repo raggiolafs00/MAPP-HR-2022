@@ -54,8 +54,13 @@ export default function Tasks ({ route }) {
     }
     const changeTask = (task) => {
         var index = tasks.findIndex(x => x.id === selectedTasks[0]);
-        tasks[index].name = task.name;
-        tasks[index].description = task.description;
+        if (task.name != '') {
+            tasks[index].name = task.name;
+            
+        }
+        else if (task.description != '') {
+            tasks[index].description = task.description;
+        }
         setTasks(tasks);
         setChangeModalOpen(false);
         setSelectedTasks([]);
@@ -83,6 +88,17 @@ export default function Tasks ({ route }) {
         setTasks(tasks);
         setChooseListModalOpen(false);
         setSelectedTasks([]);
+    }
+
+    const finishTask = (task) => {
+        var index = tasks.findIndex(x => x.id === task);
+        // console.log(tasks[index].isFinished)
+        if (tasks[index].isFinished) {
+            tasks[index].isFinished = false;
+        } else {
+            tasks[index].isFinished = true;
+        }
+        setTasks(tasks);
     }
 
     return (
@@ -122,7 +138,8 @@ export default function Tasks ({ route }) {
         onTaskPress={id => onTaskPressMove(id)}
         moveTask={() => moveTask}
         selectedTasks={selectedTasks}
-        tasklists={tasklists}/>
+        tasklists={tasklists}
+        finishTask = {id => finishTask(id)}/>
 
         <ChooseListModal 
         isOpen = {ChooseListModalOpen}

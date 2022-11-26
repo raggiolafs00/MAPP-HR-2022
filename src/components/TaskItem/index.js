@@ -3,7 +3,7 @@ import { TouchableOpacity, View, Text} from "react-native";
 import { AntDesign } from '@expo/vector-icons';
 import styles from "./styles";
 
-export default function BoardItem({onLongPress, isSelected, onMoveTask, id, name, description, isFinished, onTaskPress}) {
+export default function TaskItem({onLongPress, isSelected, onMoveTask, id, name, description, isFinished, onTaskPress, finishTask}) {
     return (
         <TouchableOpacity
         onLongPress={() => onLongPress(id)}
@@ -16,6 +16,17 @@ export default function BoardItem({onLongPress, isSelected, onMoveTask, id, name
             <></>
         }
     <View style={[styles.taskItem, isSelected ? {opacity: .5} : {}]} >
+        <TouchableOpacity 
+        style={styles.checkbox}
+        onPress={() => finishTask(id)}>
+        {
+            isFinished
+            ? 
+            <Text style={styles.check}>✓</Text>
+            :
+            <></>
+        }
+        </TouchableOpacity>
 
         <Text style={styles.nameText}>{name}</Text>
         

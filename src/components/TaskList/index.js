@@ -3,7 +3,7 @@ import { View, FlatList } from "react-native";
 import TaskItem from "../TaskItem";
 import styles from "./styles";
 
-export default function TaskList({ tasklists, selectedTasks, onMoveTask, onLongPress, onTaskPress}) {
+export default function TaskList({ tasklists, selectedTasks, onMoveTask, onLongPress, onTaskPress, finishTask}) {
   return (
     <View style={styles.container}>
       <FlatList
@@ -19,6 +19,7 @@ export default function TaskList({ tasklists, selectedTasks, onMoveTask, onLongP
             name ={name} 
             description = {description}
             isFinished = {isFinished}
+            finishTask = {finishTask}
            />
         )}
         keyExtractor={(tasks) => tasks.id} />

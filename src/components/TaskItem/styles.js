@@ -16,12 +16,25 @@ export default StyleSheet.create({
         padding: 5,
     
     },
+
+    check: {
+        alignSelf: "center"
+    },
+
     checkmark: {
         position: "absolute",
         right: 10,
         top: 10,
         fontSize: 16,
     },
+
+    checkbox: {
+        width: 25, 
+        height: 25, 
+        borderWidth: 2,
+        marginRight: 5
+    }, 
+
     nameText: {
         fontSize: 20,
         fontWeight: "bold",
