@@ -15,9 +15,8 @@ export default function ListItem({onLongPress, isSelected, id, name, color, boar
             :
             <></>
         }
-    <View style={[styles.ListItemContainer, {backgroundColor: color}, isSelected ? {opacity: .5} :{}]}>
+        <View style={[styles.ListItemContainer, {backgroundColor: color}, isSelected ? {opacity: .5} :{}]}>
             <Text style={styles.BaseText}>{name}</Text>
-
         </View>  
         </TouchableOpacity>
     )

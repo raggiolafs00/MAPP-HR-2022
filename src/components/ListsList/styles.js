@@ -2,9 +2,11 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     ListsContainer: {
-        flexDirection: 'column',
-        alignItems: 'center',
-        border: '10px',
-        height: '100%',
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingTop: 10,
+        paddingLeft: 20,
+        paddingRight: 20,
     }
 })

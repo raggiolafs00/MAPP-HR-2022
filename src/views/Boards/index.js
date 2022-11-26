@@ -86,7 +86,7 @@ export default function Boards({navigation}) {
         onAdd={() => setIsAddModelOpen(true)}
         onRemove={() => deleteSelectedBoards()}
         onChange={() => modifyBoard()}
-        hasSelectedBoards={selectedBoards.length > 0} name1 = {'Add Board'} name2 = {'Delete Board'}/>
+        hasSelectedBoards={selectedBoards.length > 0} name1 = {'Add Board'} name2 = {'Change Board'} name3 = {'Delete Board'}/>
         {
             <Boardlist 
                 onLongPress={id => onBoardLongPress(id)}

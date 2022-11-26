@@ -4,6 +4,7 @@ import Toolbar from '../../components/Toolbar';
 import ListsList from '../../components/ListsList';
 import data from '../../resources/data.json';
 import styles from './styles';
+import ListModal from '../../components/ListModal';
 
 
 export default function Lists ({ navigation, route }) {
@@ -11,6 +12,8 @@ export default function Lists ({ navigation, route }) {
     const [lists, setLists] = useState(data.lists);
     const listlists = lists.filter(lists => lists.boardId === id);
     const [selectedLists, setSelectedLists] = useState([]);
+    const [isAddModelOpen, setIsAddModelOpen] = useState(false);
+    const [selectedcolor, setSelectedcolor] = useState([]);
 
 
     const onListLongPress = id => {
@@ -21,21 +24,34 @@ export default function Lists ({ navigation, route }) {
         }  
     };
 
-    const deleteSelectedLists = async () => {
-        // setLoadingLists(true);
+    const createList = (list, color) => {
+        var lastId = lists.length - 1;
+        list.id = lastId + 1;
+        list.boardId = id;
+        list.color = color;
+        setLists((currentlists) => {
+            return [...lists, list];
+        })
+        setIsAddModelOpen(false);
+        console.log(list);
+    }
 
-        // await Promise.all(selectedLists.map(list => fileService.remove(list)));
+    const deleteSelectedLists = async () => {
         setSelectedLists([]);
         setLists(lists.filter(list => selectedLists.indexOf(list.id) === -1))
-        // setLoadingLists(false);
     }
+
+    
+    
 
 
     return (
     <View style={styles.container}>
         <Toolbar 
-        hasSelectedLists={selectedLists.length > 0} name1 = {'Add List'} name2 = {'Delete List'}
+        hasSelectedLists={selectedLists.length > 0} name1 = {'Add List'} name2 = {'Change list'} name3 = {'Delete List'}
+        onAdd={() => setIsAddModelOpen(true)}
         onRemove={() => deleteSelectedLists()}
+        onChange={() => setIsChangeModelOpen(true)}
         />
         
         <ListsList
@@ -44,6 +60,15 @@ export default function Lists ({ navigation, route }) {
         listlists={listlists}
         lists = {lists}
         navigation={navigation}/>
+
+        <ListModal 
+        createList={createList}
+        isOpen={isAddModelOpen}
+        closeModal={() => setIsAddModelOpen(false)}
+        boardId = {id}
+        setSelectedcolor = {(color) => setSelectedcolor(color)}
+        />
     </View>
     )
+    
 }

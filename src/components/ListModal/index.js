@@ -1,21 +1,19 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { View, Text} from "react-native";
 import NativeModal from "react-native-modal";
 import styles from "./styles";
-import TaskForm from "../TaskForm"
+import ListForm from "../ListForm"
 import {MaterialIcons} from '@expo/vector-icons'
-import data from '../../resources/data.json';
 
-export default function TaskModal ({isOpen, closeModal, effectTasks}) {
 
+export default function ListModal ({ createList, isOpen, closeModal, boardId, setSelected}) {
     return (
         <NativeModal visible = {isOpen} 
                closeModal = {closeModal}
                animationType = 'slide'
                style={styles.modal}>
             <View style = {styles.body}> 
-                <TaskForm effectTasks = {effectTasks} />
+                <ListForm createList = {createList}/>
                 <MaterialIcons style = {styles.icon} name = 'close' onPress={closeModal}/>
             </View>
         </NativeModal>

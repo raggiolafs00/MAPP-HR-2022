@@ -4,6 +4,7 @@ import { Formik } from 'formik';
 import styles from './styles';
 
 export default function TaskForm ({effectTasks}) {
+  console.log(effectTasks)
     return (
         <Formik
         initialValues={{ name: '', description: '' }}

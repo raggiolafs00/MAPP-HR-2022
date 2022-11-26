@@ -64,28 +64,25 @@ export default function Tasks ({ route }) {
     const addTask = (task) => {
         var lastId = tasks.length - 1;
         task.id = lastId + 1;
-        console.log(task.id);
         task.isFinished = false;
-        task.listId = listId;
-        console.log(listId);
+        task.listId = id;
         setTasks((currentTasks) => {
-            console.log(currentTasks)
-            console.log(task)
-            return [...currentTasks, task];
+            return [...tasks, task];
         })
-        closeModal()
+        setModalOpen(false);
     }
 
     const moveTask = (task) => {
         setMoveModalOpen(false);
-        var index = tasks.findIndex(x => x.id === selectedTasks[0]);
-        console.log("ble");
-        console.log(index);
         setChooseListModalOpen(true);
-        // tasks[index].listId = task.listId;
-        // setTasks(tasks);
-        // setMoveModalOpen(false);
-        // setSelectedTasks([]);
+    }
+
+    const changeTaskListId = (id) => {
+        var index = tasks.findIndex(x => x.id === selectedTasks[0]);
+        tasks[index].listId = id;
+        setTasks(tasks);
+        setChooseListModalOpen(false);
+        setSelectedTasks([]);
     }
 
     return (
@@ -117,7 +114,8 @@ export default function Tasks ({ route }) {
         onChange={() => modifyTask()}
         hasSelectedTasks={selectedTasks.length > 0} 
         name1 = {'Add Task'} 
-        name2 = {'Delete TasK'}/>
+        name2 = {'Change Task'}
+        name3 = {'Delete Task'}/>
 
         <TaskList 
         onLongPress={id => onTaskLongPress(id)}
@@ -129,8 +127,8 @@ export default function Tasks ({ route }) {
         <ChooseListModal 
         isOpen = {ChooseListModalOpen}
         closeModal = {() => setChooseListModalOpen(false)}
+        changeTaskListId = {(id) => changeTaskListId(id)}
         lists = {route.params.lists}/>
-
     </View>
     )
 }

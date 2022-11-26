@@ -3,7 +3,7 @@ import Proptypes from "prop-types";
 import { TouchableHighlight, View, Text} from "react-native";
 import styles from "./styles";
 
-const Toolbar = ({ hasSelectedBoards, hasSelectedLists, hasSelectedTasks, name1, name2, onAdd, onRemove, onChange}) => (
+const Toolbar = ({ hasSelectedBoards, hasSelectedLists, hasSelectedTasks, name1, name2, name3, onAdd, onRemove, onChange}) => (
     <View style={styles.toolbar}>
         <TouchableHighlight
         onPress={() => onAdd()}  
@@ -15,14 +15,14 @@ const Toolbar = ({ hasSelectedBoards, hasSelectedLists, hasSelectedTasks, name1,
         style={styles.toolbarAction}
         disabled={!hasSelectedBoards && !hasSelectedLists && !hasSelectedTasks}>
             <Text style={[styles.toolbarActionText, (!hasSelectedBoards && !hasSelectedLists && !hasSelectedTasks) ? 
-                {color: 'rgba(155, 155, 155, .5)' } : {}]}>Change</Text>
+                {color: 'rgba(155, 155, 155, .5)' } : {}]}>{name2}</Text>
         </TouchableHighlight>
         <TouchableHighlight 
         onPress = {() => onRemove()}
         style={styles.toolbarAction}
         disabled={!hasSelectedBoards && !hasSelectedLists && !hasSelectedTasks}>
             <Text style={[styles.toolbarActionText, (!hasSelectedBoards && !hasSelectedLists && !hasSelectedTasks) ? 
-                {color: 'rgba(155, 155, 155, .5)' } : {}]}>{name2}</Text>
+                {color: 'rgba(155, 155, 155, .5)' } : {}]}>{name3}</Text>
         </TouchableHighlight>
     </View>
 );

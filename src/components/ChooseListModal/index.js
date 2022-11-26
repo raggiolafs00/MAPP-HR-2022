@@ -8,7 +8,7 @@ import {MaterialIcons} from '@expo/vector-icons'
 
 console.log('hello')
 
-export default function ChooseListModal ({isOpen, closeModal, lists}) {
+export default function ChooseListModal ({isOpen, closeModal, changeTaskListId, lists}) {
 
     return (
         <NativeModal visible = {isOpen} 
@@ -24,6 +24,7 @@ export default function ChooseListModal ({isOpen, closeModal, lists}) {
                         name={name}
                         color={color}
                         lists={lists}
+                        changeTaskListId={changeTaskListId}
                         />
                 )}
                 keyExtractor={(lists) => lists.id} />
