@@ -21,7 +21,6 @@ export default function Tasks ({ route }) {
 
     useEffect(() => {
         data.tasks = tasks;
-        tasks.isFinished = false;
     }, [tasks]);
 
     
@@ -97,14 +96,14 @@ export default function Tasks ({ route }) {
         setSelectedTasks([]);
     }
 
-    const finishTask = (task) => {
-        var index = tasks.findIndex(x => x.id === task);
+    const finishTask = (id) => {
+        var index = tasks.findIndex(x => x.id === id);
         if (tasks[index].isFinished) {
             tasks[index].isFinished = false;
-            setFinishedTask(finishedTask.filter(tasks => tasks !== task));
+            setFinishedTask(finishedTask.filter(task => task !== id));
         } else {
             tasks[index].isFinished = true;
-            setFinishedTask(task)
+            setFinishedTask(id)
         }
         setTasks(tasks);
         
@@ -150,7 +149,7 @@ export default function Tasks ({ route }) {
         moveTask={() => moveTask}
         selectedTasks={selectedTasks}
         tasklists={tasklists}
-        finishTask = {id => finishTask(id)}/>
+        finishTask = {task => finishTask(task)}/>
 
         <ChooseListModal 
         isOpen = {ChooseListModalOpen}
